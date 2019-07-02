@@ -1,0 +1,161 @@
+
+{
+  "schema": "https://iotx-tsl.oss-ap-southeast-1.aliyuncs.com/schema.json",
+  "profile": {
+    "productKey": "xxxxxxxxxx"
+  },
+  "services": [
+    {
+      "outputData": [],
+      "identifier": "set",
+      "inputData": [
+        {
+          "identifier": "abs_speed",
+          "dataType": {
+            "specs": {
+              "unit": "m/s",
+              "min": "1",
+              "max": "300000000",
+              "step": "1"
+            },
+            "type": "int"
+          },
+          "name": "绝对速度"
+        }
+      ],
+      "method": "thing.service.property.set",
+      "name": "set",
+      "required": true,
+      "callType": "async",
+      "desc": "属性设置"
+    },
+    {
+      "outputData": [
+        {
+          "identifier": "abs_speed",
+          "dataType": {
+            "specs": {
+              "unit": "m/s",
+              "min": "1",
+              "max": "300000000",
+              "step": "1"
+            },
+            "type": "int"
+          },
+          "name": "绝对速度"
+        }
+      ],
+      "identifier": "get",
+      "inputData": [
+        "abs_speed"
+      ],
+      "method": "thing.service.property.get",
+      "name": "get",
+      "required": true,
+      "callType": "async",
+      "desc": "属性获取"
+    },
+    {
+      "outputData": [],
+      "identifier": "attack",
+      "inputData": [
+        {
+          "identifier": "count",
+          "dataType": {
+            "specs": {
+              "unit": "kW",
+              "min": "1",
+              "max": "1000",
+              "step": "1"
+            },
+            "type": "int"
+          },
+          "name": "发射次数"
+        }
+      ],
+      "method": "thing.service.attack",
+      "name": "攻击",
+      "required": false,
+      "callType": "async",
+      "desc": "质子攻击"
+    }
+  ],
+  "properties": [
+    {
+      "identifier": "abs_speed",
+      "dataType": {
+        "specs": {
+          "unit": "m/s",
+          "min": "1",
+          "max": "300000000",
+          "step": "1"
+        },
+        "type": "int"
+      },
+      "name": "绝对速度",
+      "accessMode": "rw",
+      "required": false,
+      "desc": "运动的绝对速度"
+    }
+  ],
+  "events": [
+    {
+      "outputData": [
+        {
+          "identifier": "abs_speed",
+          "dataType": {
+            "specs": {
+              "unit": "m/s",
+              "min": "1",
+              "max": "300000000",
+              "step": "1"
+            },
+            "type": "int"
+          },
+          "name": "绝对速度"
+        }
+      ],
+      "identifier": "post",
+      "method": "thing.event.property.post",
+      "name": "post",
+      "type": "info",
+      "required": true,
+      "desc": "属性上报"
+    },
+    {
+      "outputData": [
+        {
+          "identifier": "power",
+          "dataType": {
+            "specs": {
+              "min": "1",
+              "max": "100",
+              "step": "1"
+            },
+            "type": "int"
+          },
+          "name": "能量"
+        },
+        {
+          "identifier": "power_style",
+          "dataType": {
+            "specs": {
+              "1": "sine",
+              "2": "triangle",
+              "3": "const",
+              "4": "peak"
+            },
+            "type": "enum"
+          },
+          "name": "能量方式"
+        }
+      ],
+      "identifier": "power_state",
+      "method": "thing.event.power_state.post",
+      "name": "能量状态",
+      "type": "info",
+      "required": false,
+      "desc": "能量大小"
+    }
+  ]
+}
